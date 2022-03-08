@@ -1,0 +1,54 @@
+{
+    "name":"FOS - Spinner Actions"
+   ,"version":"21.2.0"
+   ,"description":"Dynamic Action to show\/hide spinner element, add overlay or custom icon to it.\r\n\u003Ch4\u003EFree Plug-in under MIT License\u003C\/h4\u003E\r\n\u003Cp\u003E\r\nAll FOS plug-ins are released under MIT License, which essentially means it is free for everyone to use, no matter if commercial or private use. \r\n\u003C\/p\u003E\r\n\u003Ch4\u003EOverview\u003C\/h4\u003E\r\n\u003Cp\u003EThe \u003Cstrong\u003EFOS - Spinner Actions\u003C\/strong\u003E dynamic action plug-in is the perfect tool to deal with spinners and overlays. With support for various spinner icons, configurable display locations, overlays with the colour of your choice - it\u0027s never been easier to create nice loading screens.\u003C\/p\u003E"
+   ,"keywords":[
+        "spinner"
+       ,"actions"
+       ,"dynamic"
+    ]
+   ,"license":"MIT"
+   ,"commercial":"No"
+   ,"commercially_supported":"Yes"
+   ,"homepage":"https:\/\/github.com\/foex-open-source\/fos-spinner-actions"
+   ,"bugs":{
+        "url":"https:\/\/github.com\/foex-open-source\/fos-spinner-actions\/issues"
+       ,"email":"support@fos.world"
+    }
+   ,"author":{
+        "name":"FOEX GmbH"
+       ,"email":"office@fos.world"
+       ,"url":"https:\/\/foex.at\/fos\/"
+       ,"twitter":"@foexopensource"
+    }
+   ,"repository":{
+        "type":"git"
+       ,"url":"https:\/\/github.com\/foex-open-source\/fos-spinner-actions.git"
+    }
+   ,"oracle":{
+        "versions":[
+            "12.1.0.1"
+           ,"12.2.0.1"
+           ,"18.0.0.0"
+           ,"19.0.0.0"
+           ,"21.0.0.0"
+        ]
+       ,"apex":{
+            "versions":[
+                "19.2.0"
+               ,"20.1.0"
+               ,"20.2.0"
+               ,"21.1.0"
+               ,"21.2.0"
+            ]
+           ,"plugin":{
+                "internalName":"COM.FOS.SPINNER_ACTIONS"
+               ,"type":"dynamic action"
+               ,"demo":"https:\/\/fos.world\/ords\/f?p=10000:1140"
+               ,"previewImage":"https:\/\/fos.world\/ords\/fos_master_ws\/fos-image\/COM.FOS.SPINNER_ACTIONS"
+            }
+        }
+    }
+}
+
+
