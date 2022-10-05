@@ -57,18 +57,19 @@ FOS.utils.spinnerActions = (function ($) {
         // loop through the affectedElements
         daContext.affectedElements.each(function (idx, el) {
             affectedElement = $(el);
-            // check for spinner on the element
-            if (affectedElement.children(NATIVE_SPINNER_SELECTOR).length > 0 || affectedElement.children(CUSTOM_SPINNER_SELECTOR).length > 0) {
+            // check for spinner or  on the element
+            if (affectedElement.children(NATIVE_SPINNER_SELECTOR).length > 0 || affectedElement.children(CUSTOM_SPINNER_SELECTOR).length > 0 || affectedElement.hasClass(REGION_HAS_OVERLAY)) {
                 return;
             }
 
-            // create the spinner
-            spinner = apex.util.showSpinner(affectedElement, {
-                fixed: config.overlayType == 'on-page',
-                spinnerClass: config.spinnerClass,
-                alert: config.accessText
+            if(config.spinnerType != 'none'){
+                // create the spinner
+                spinner = apex.util.showSpinner(affectedElement, {
+                    fixed: config.overlayType == 'on-page',
+                    spinnerClass: config.spinnerClass,
+                    alert: config.accessText
+                });
             }
-            );
 
             if (config.spinnerType === 'custom') {
                 let newSpinner = addCustomSpinner(config.id, config.spinnerHTML, config.spinnerCSS, spinner);
@@ -97,11 +98,15 @@ FOS.utils.spinnerActions = (function ($) {
             // create a unique id for the spinner instance (daContext.id + element index)
             // (need it to associate it with the overlay element)
             id = config.id + '_' + idx;
-            spinner.attr('id', id);
+            if(spinner){
+                spinner.attr('id', id);
+            }
 
             // add overlay, if neccessary
             if (config.overlayType != 'none') {
-                spinner.addClass(SPINNER_WITH_OVERLAY);
+                if(spinner){
+                    spinner.addClass(SPINNER_WITH_OVERLAY);
+                };
                 me.addOverlay(affectedElement, config, id);
             }
 
@@ -170,9 +175,10 @@ FOS.utils.spinnerActions = (function ($) {
                 spinnerElements = $(el).children(CUSTOM_SPINNER_SELECTOR);
             }
             // return if not found
-            if (spinnerElements.length == 0) {
+            if (spinnerElements.length == 0 && !$(el).hasClass(REGION_HAS_OVERLAY)) {
                 return;
             }
+
             spinnerElements.each(function (sIdx, sEl) {
                 // get the spinner element
                 spinnerEl = $(sEl);
@@ -185,6 +191,13 @@ FOS.utils.spinnerActions = (function ($) {
                 // using the splitter id, remove the overlay
                 me.removeOverlay(spinnerId, spinnerEl.hasClass(SPINNER_WITH_OVERLAY));
             });
+
+            // get the overlay element id
+            let overlayEl = $(el).children('.' + OVERLAY_REGION_STYLE);
+            if(overlayEl.length > 0){
+                me.removeOverlay(overlayEl.attr('data-spinner-id'), false);
+            }
+
         });
     };
 
